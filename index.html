@@ -140,10 +140,10 @@
 
         .mantra-path-text {
             font-family: var(--font-devanagari);
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             fill: var(--gold);
-            letter-spacing: 0.4px;
+            letter-spacing: 0.2px;
         }
 
         .welcome-box {
@@ -391,7 +391,7 @@
             }
 
             .mantra-path-text {
-                font-size: 18px;
+                font-size: 16px;
                 letter-spacing: 0;
             }
 
@@ -455,7 +455,7 @@
                         <path id="circlePath" d="M 200, 200 m -122, 0 a 122, 122 0 1, 1 244, 0 a 122, 122 0 1, 1 -244, 0" />
                     </defs>
                     <text class="mantra-path-text">
-                        <textPath id="textPathContent" href="#circlePath" startOffset="50%" text-anchor="middle"></textPath>
+                        <textPath id="textPathContent" href="#circlePath" startOffset="0%"></textPath>
                     </text>
                 </svg>
             </div>
@@ -480,7 +480,7 @@
                 <div style="font-family: var(--font-devanagari); font-size: 1.2rem; color: var(--pastel-purple);">सुपुत्री डॉ. सुमन एवं डॉ. पद्माकर राव सुत्रावे</div>
                 <span style="font-family: var(--font-serif); font-size: 1.8rem; display: block; margin: 15px 0; font-style: italic; color: var(--pastel-blue);">संग</span>
                 <div style="font-family: var(--font-devanagari); font-size: clamp(2.5rem, 8vw, 4rem); color: var(--pastel-pink); letter-spacing: 1px;">अर्पण</div>
-                <div style="font-family: var(--font-devanagari); font-size: 1.2rem; color: var(--pastel-purple);">सुपुत्र श्रीमती दीपाली तापड़िया एवं श्री घनश्यामजी तापड़िया</div>
+                <div style="font-family: var(--font-devanagari); font-size: 1.2rem; color: var(--pastel-purple);">सुपुत्र श्रीमती दीपाली एवं श्री घनश्यामजी तापड़िया</div>
                 <div style="font-family: var(--font-devanagari); font-size: 1.8rem; color: var(--pastel-blue); margin-top: 35px;">०७ मई २०२६</div>
             </div>
         </section>
@@ -594,14 +594,9 @@
 
         function typeMantra() {
             const pathContent = document.getElementById('textPathContent');
-            const fullMantra = "ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ";
-            let i = 0;
-            pathContent.textContent = "";
-            const interval = setInterval(() => {
-                pathContent.textContent += fullMantra[i];
-                i++;
-                if (i === fullMantra.length) clearInterval(interval);
-            }, 60);
+            const mantraUnit = " ॐ गणेशाय नमः";
+            const repeatedMantra = mantraUnit.repeat(10) + " ";
+            pathContent.textContent = repeatedMantra;
         }
 
         function openLetter() {
