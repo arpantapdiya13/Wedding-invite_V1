@@ -140,10 +140,10 @@
 
         .mantra-path-text {
             font-family: var(--font-devanagari);
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             fill: var(--gold);
-            letter-spacing: 0.2px;
+            letter-spacing: 0;
         }
 
         .welcome-box {
@@ -598,7 +598,7 @@
         function typeMantra() {
             const pathContent = document.getElementById('textPathContent');
             const mantraUnit = " ॐ गणेशाय नमः ";
-            const fullMantra = mantraUnit.repeat(9) + " ";
+            const fullMantra = mantraUnit.repeat(8) + " ";
             
 			let i = 0;
 			pathContent.textContent = "";
