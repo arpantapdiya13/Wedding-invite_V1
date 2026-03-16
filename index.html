@@ -599,7 +599,8 @@
             const pathContent = document.getElementById('textPathContent');
             const mantraUnit = " ॐ गणेशाय नमः";
             const repeatedMantra = mantraUnit.repeat(10) + " ";
-            let i = 0;
+            
+			let i = 0;
 			pathContent.textContent = "";
 
 			const interval = setInterval(() => {
@@ -610,7 +611,6 @@
 				clearInterval(interval);
 				}
 			}, 180);
-}
         }
 
         function openLetter() {
