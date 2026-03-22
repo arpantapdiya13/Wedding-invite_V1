@@ -36,20 +36,20 @@
 
         body:not(.is-open) { overflow: hidden; }
 
-        #intro-page {
+        #intro-page-latest {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('./assets/intro-page.png') no-repeat center center;
+            background: url('./assets/intro-page-latest.png') no-repeat center center;
             background-size: cover;
             z-index: 2000;
             cursor: pointer;
             transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
         }
 
-        .is-open #intro-page { transform: translateY(-100%); }
+        .is-open #intro-page-latest { transform: translateY(-100%); }
 
         .floral-side {
             position: fixed;
@@ -458,7 +458,7 @@
 </head>
 <body id="page-body">
 
-    <div id="intro-page" onclick="openLetter()"></div>
+    <div id="intro-page-latest" onclick="openLetter()"></div>
     <div id="music-control" onclick="toggleMusic()">♪</div>
     
     <audio id="wedding-audio" loop>
