@@ -597,23 +597,22 @@
         let isPlaying = false;
 
         function typeMantra() {
-            const pathContent = document.getElementById('textPathContent');
-            const mantraUnit = " ॐ गणेशाय नमः";
-            const fullMantra = mantraUnit.repeat(8) + " ";
-            
-			let i = 0;
-			pathContent.textContent = "";
+    const pathContent = document.getElementById('textPathContent');
+    const mantraUnit = " ॐ गणेशाय नमः ";
+    const totalRepeats = 5;
 
-			const interval = setInterval(() => {
-				pathContent.textContent += fullMantra[i];
-				i++;
+    let current = 0;
+    pathContent.textContent = "";
 
-				if (i >= fullMantra.length) {
-				clearInterval(interval);
-				}
-			}, 60);
+    const interval = setInterval(() => {
+        pathContent.textContent += mantraUnit;
+        current++;
+
+        if (current >= totalRepeats) {
+            clearInterval(interval);
         }
-
+    }, 60);
+}
         function openLetter() {
             document.getElementById('page-body').classList.add('is-open');
             document.body.style.overflowY = "auto";
