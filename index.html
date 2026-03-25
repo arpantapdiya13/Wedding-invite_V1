@@ -596,26 +596,29 @@
         const audio = document.getElementById('wedding-audio');
         let isPlaying = false;
 
-    
+       
 	function typeMantra() {
-	    const pathContent = document.getElementById('textPathContent');
-	    const mantraUnit = " ॐ गणेशाय नमः ";
-	    const fullMantra = mantraUnit.repeat(5);
-	
-	    let i = 0;
-	    pathContent.textContent = "";
-	
-	    const interval = setInterval(() => {
-	        pathContent.textContent += fullMantra[i];
-	        i++;
-	
-	        if (i >= fullMantra.length) {
-	            clearInterval(interval);
-	        }
-	    }, 120);
-	}     
-		
-		function openLetter() {
+    const pathContent = document.getElementById('textPathContent');
+    const fullMantra = " ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ";
+
+    pathContent.textContent = "";
+
+    const segmenter = new Intl.Segmenter("hi", { granularity: "grapheme" });
+    const parts = Array.from(segmenter.segment(fullMantra), s => s.segment);
+
+    let i = 0;
+
+    const interval = setInterval(() => {
+        pathContent.textContent += parts[i];
+        i++;
+
+        if (i >= parts.length) {
+            clearInterval(interval);
+        }
+    }, 120);
+}
+
+        function openLetter() {
             document.getElementById('page-body').classList.add('is-open');
             document.body.style.overflowY = "auto";
             setTimeout(typeMantra, 1000);
