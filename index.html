@@ -36,20 +36,20 @@
 
         body:not(.is-open) { overflow: hidden; }
 
-        #intro-page-latest {
+        #intro-page {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('./assets/intro-page-latest.png') no-repeat center center;
+            background: url('./assets/intro-page.png') no-repeat center center;
             background-size: cover;
             z-index: 2000;
             cursor: pointer;
             transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
         }
 
-        .is-open #intro-page-latest { transform: translateY(-100%); }
+        .is-open #intro-page { transform: translateY(-100%); }
 
         .floral-side {
             position: fixed;
@@ -129,42 +129,21 @@
 
         .is-open .ganesha-custom-img { opacity: 1; }
 
-        .mantra-ring-svg {
+        #mantra-svg {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 6;
-            transform: rotate(-95deg) scale(0.98);
-            transform-origin: center center;
+            transform: rotate(-95deg);
         }
 
-        .is-open .mantra-ring-svg {
-            opacity: 1;
-            animation: mantraFadeIn 1.2s ease forwards, mantraRotate 36s linear infinite;
-        }
-
-        @keyframes mantraFadeIn {
-            from {
-                opacity: 0;
-                transform: rotate(-95deg) scale(0.94);
-            }
-            to {
-                opacity: 1;
-                transform: rotate(-95deg) scale(1);
-            }
-        }
-
-        @keyframes mantraRotate {
-            from {
-                transform: rotate(-95deg);
-            }
-            to {
-                transform: rotate(265deg);
-            }
+        .mantra-path-text {
+            font-family: "Noto Serif Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", serif;
+            font-size: 26px;
+            font-weight: 700;
+            fill: var(--gold);
+            letter-spacing: 0.0px;
         }
 
         .welcome-box {
@@ -385,14 +364,14 @@
             .city-label { font-size: 0.7rem; }
 
             .welcome-box {
-                box-sizing: border-box;
-                width: calc(100vw - 32px);
-                max-width: 500px;
-                margin-left: auto;
-                margin-right: auto;
-                padding: 36px 18px;
-                border-radius: 28px;
-            }
+				box-sizing: border-box;
+				width: calc(100vw - 32px);
+				max-width: 500px;
+				margin-left: auto;
+				margin-right: auto;
+				padding: 36px 18px;
+				border-radius: 28px;
+			}
 
             .welcome-title {
                 font-size: 2rem;
@@ -414,8 +393,10 @@
                 line-height: 1.75;
             }
 
-            .mantra-ring-svg {
-                transform: rotate(-95deg) scale(1);
+            .mantra-path-text {
+                font-size: 26px;
+                letter-spacing: 0.0px;
+                font-weight: 700;
             }
 
             .baraat-slider-section {
@@ -458,7 +439,7 @@
 </head>
 <body id="page-body">
 
-    <div id="intro-page-latest" onclick="openLetter()"></div>
+    <div id="intro-page" onclick="openLetter()"></div>
     <div id="music-control" onclick="toggleMusic()">♪</div>
     
     <audio id="wedding-audio" loop>
@@ -473,7 +454,14 @@
         <section>
             <div class="ganesha-container">
                 <img class="ganesha-custom-img" alt="Ganesha">
-                <img src="./assets/mantra-ring-updated.svg" class="mantra-ring-svg" alt="Mantra Ring">
+                <svg id="mantra-svg" viewBox="0 0 400 400">
+                    <defs>
+                        <path id="circlePath" d="M 200, 200 m -126, 0 a 126, 126 0 1, 1 252, 0 a 126, 126 0 1, 1 -252, 0" />
+                    </defs>
+                    <text class="mantra-path-text">
+                        <textPath id="textPathContent" href="#circlePath" startOffset="0%"></textPath>
+                    </text>
+                </svg>
             </div>
         </section>
 
@@ -542,7 +530,7 @@
                             <div class="event-name">The Wedding</div>
                             <div style="font-size: 0.85rem; color: #666;">📍 Sri Convention Hall, Hyderabad</div>
                         </div>
-                        <a href="https://www.google.com/maps/place/Sri+Convention+Hall/@17.5111449,78.2961623,17z/data=!4m17!1m10!3m9!1s0x3bcb8d66ab4e988f:0xda59fdc59515bdc4!2sSri+Convention+Hall!8m2!3d17.5111449!4d78.2961623!10e5!14m1!1BCgIgARICGAI!16s%2Fg%2F11h565rxxc!3m5!1s0x3bcb8d66ab4e988f:0xda59fdc59515bdc4!8m2!3d17.5111449!4d78.2961623!16s%2Fg%2F11h565rxxc!5m1!1e1!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="maps-btn">View on Maps</a>
+                       <a href="https://www.google.com/maps/place/Sri+Convention+Hall/@17.5111449,78.2961623,17z/data=!4m17!1m10!3m9!1s0x3bcb8d66ab4e988f:0xda59fdc59515bdc4!2sSri+Convention+Hall!8m2!3d17.5111449!4d78.2961623!10e5!14m1!1BCgIgARICGAI!16s%2Fg%2F11h565rxxc!3m5!1s0x3bcb8d66ab4e988f:0xda59fdc59515bdc4!8m2!3d17.5111449!4d78.2961623!16s%2Fg%2F11h565rxxc!5m1!1e1!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="maps-btn">View on Maps</a>
                     </div>
                     <div class="event-card">
                         <div>
@@ -608,9 +596,27 @@
         const audio = document.getElementById('wedding-audio');
         let isPlaying = false;
 
+        function typeMantra() {
+    const pathContent = document.getElementById('textPathContent');
+    const mantraUnit = " ॐ गणेशाय नमः ";
+    const totalRepeats = 5;
+
+    let current = 0;
+    pathContent.textContent = "";
+
+    const interval = setInterval(() => {
+        pathContent.textContent += mantraUnit;
+        current++;
+
+        if (current >= totalRepeats) {
+            clearInterval(interval);
+        }
+    }, 60);
+}
         function openLetter() {
             document.getElementById('page-body').classList.add('is-open');
             document.body.style.overflowY = "auto";
+            setTimeout(typeMantra, 1000);
             audio.play().then(() => { isPlaying = true; }).catch(e => {});
         }
 
@@ -628,7 +634,7 @@
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && typeof confetti === "function") {
+                if (entry.isIntersecting) {
                     confetti({
                         particleCount: 150,
                         spread: 100,
