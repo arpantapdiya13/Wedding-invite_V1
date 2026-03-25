@@ -596,22 +596,26 @@
         const audio = document.getElementById('wedding-audio');
         let isPlaying = false;
 
-        function typeMantra() {
+    
+function typeMantra() {
     const pathContent = document.getElementById('textPathContent');
-    const mantraUnit = " ॐ गणेशाय नमः ";
-    const totalRepeats = 5;
+    const fullMantra = " ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ";
 
-    let current = 0;
     pathContent.textContent = "";
 
-    const interval = setInterval(() => {
-        pathContent.textContent += mantraUnit;
-        current++;
+    const segmenter = new Intl.Segmenter("hi", { granularity: "grapheme" });
+    const parts = Array.from(segmenter.segment(fullMantra), s => s.segment);
 
-        if (current >= totalRepeats) {
+    let i = 0;
+
+    const interval = setInterval(() => {
+        pathContent.textContent += parts[i];
+        i++;
+
+        if (i >= parts.length) {
             clearInterval(interval);
         }
-    }, 60);
+    }, 120);
 }
         function openLetter() {
             document.getElementById('page-body').classList.add('is-open');
