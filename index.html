@@ -122,16 +122,13 @@
             object-fit: cover;
             content: url('./assets/ganesha_image.jpg');
             mix-blend-mode: multiply;
-            z-index: 7;
+            z-index: 5;
             opacity: 0;
             transition: opacity 1.5s ease 0.5s;
-            position: relative;
         }
 
         .is-open .ganesha-custom-img { opacity: 1; }
 
-        /* Existing mantra text rendering kept for reference */
-        /*
         #mantra-svg {
             position: absolute;
             top: 0;
@@ -147,24 +144,6 @@
             font-weight: 700;
             fill: var(--gold);
             letter-spacing: 0.0px;
-        }
-        */
-
-        .mantra-video {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            pointer-events: none;
-            z-index: 4;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            background: transparent;
-        }
-
-        .is-open .mantra-video {
-            opacity: 1;
         }
 
         .welcome-box {
@@ -385,14 +364,14 @@
             .city-label { font-size: 0.7rem; }
 
             .welcome-box {
-                box-sizing: border-box;
-                width: calc(100vw - 32px);
-                max-width: 500px;
-                margin-left: auto;
-                margin-right: auto;
-                padding: 36px 18px;
-                border-radius: 28px;
-            }
+				box-sizing: border-box;
+				width: calc(100vw - 32px);
+				max-width: 500px;
+				margin-left: auto;
+				margin-right: auto;
+				padding: 36px 18px;
+				border-radius: 28px;
+			}
 
             .welcome-title {
                 font-size: 2rem;
@@ -414,13 +393,11 @@
                 line-height: 1.75;
             }
 
-            /*
             .mantra-path-text {
                 font-size: 26px;
                 letter-spacing: 0.0px;
                 font-weight: 700;
             }
-            */
 
             .baraat-slider-section {
                 height: 240px;
@@ -477,12 +454,6 @@
         <section>
             <div class="ganesha-container">
                 <img class="ganesha-custom-img" alt="Ganesha">
-
-                <video id="mantra-video" class="mantra-video" muted playsinline loop>
-                    <source src="./assets/mantra-video.mp4 type="video/mp4">
-                </video>
-
-                <!-- Existing mantra text rendering kept for reference only
                 <svg id="mantra-svg" viewBox="0 0 400 400">
                     <defs>
                         <path id="circlePath" d="M 200, 200 m -126, 0 a 126, 126 0 1, 1 252, 0 a 126, 126 0 1, 1 -252, 0" />
@@ -491,7 +462,6 @@
                         <textPath id="textPathContent" href="#circlePath" startOffset="0%"></textPath>
                     </text>
                 </svg>
-                -->
             </div>
         </section>
 
@@ -624,41 +594,29 @@
 
     <script>
         const audio = document.getElementById('wedding-audio');
-        const mantraVideo = document.getElementById('mantra-video');
         let isPlaying = false;
 
-        /*
         function typeMantra() {
-            const pathContent = document.getElementById('textPathContent');
-            const fullMantra = " ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ";
+    const pathContent = document.getElementById('textPathContent');
+    const mantraUnit = " ॐ गणेशाय नमः ";
+    const totalRepeats = 5;
 
-            pathContent.textContent = "";
+    let current = 0;
+    pathContent.textContent = "";
 
-            const segmenter = new Intl.Segmenter("hi", { granularity: "grapheme" });
-            const parts = Array.from(segmenter.segment(fullMantra), s => s.segment);
+    const interval = setInterval(() => {
+        pathContent.textContent += mantraUnit;
+        current++;
 
-            let i = 0;
-
-            const interval = setInterval(() => {
-                pathContent.textContent += parts[i];
-                i++;
-
-                if (i >= parts.length) {
-                    clearInterval(interval);
-                }
-            }, 90);
+        if (current >= totalRepeats) {
+            clearInterval(interval);
         }
-        */
-
+    }, 60);
+}
         function openLetter() {
             document.getElementById('page-body').classList.add('is-open');
             document.body.style.overflowY = "auto";
-
-            if (mantraVideo) {
-                mantraVideo.currentTime = 0;
-                mantraVideo.play().catch(() => {});
-            }
-
+            setTimeout(typeMantra, 1000);
             audio.play().then(() => { isPlaying = true; }).catch(e => {});
         }
 
