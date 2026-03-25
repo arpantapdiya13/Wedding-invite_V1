@@ -599,19 +599,19 @@
         function typeMantra() {
     const pathContent = document.getElementById('textPathContent');
     const mantraUnit = " ॐ गणेशाय नमः ";
-    const totalRepeats = 5;
+    const fullMantra = mantraUnit.repeat(5);
 
-    let current = 0;
+    let i = 0;
     pathContent.textContent = "";
 
     const interval = setInterval(() => {
-        pathContent.textContent += mantraUnit;
-        current++;
+        pathContent.textContent += fullMantra[i];
+        i++;
 
-        if (current >= totalRepeats) {
+        if (i >= fullMantra.length) {
             clearInterval(interval);
         }
-    }, 60);
+    }, 200);
 }
         function openLetter() {
             document.getElementById('page-body').classList.add('is-open');
