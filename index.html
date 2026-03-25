@@ -122,9 +122,10 @@
             object-fit: cover;
             content: url('./assets/ganesha_image.jpg');
             mix-blend-mode: multiply;
-            z-index: 5;
+            z-index: 7;
             opacity: 0;
             transition: opacity 1.5s ease 0.5s;
+            position: relative;
         }
 
         .is-open .ganesha-custom-img { opacity: 1; }
@@ -156,7 +157,7 @@
             height: 100%;
             object-fit: contain;
             pointer-events: none;
-            z-index: 6;
+            z-index: 4;
             opacity: 0;
             transition: opacity 0.8s ease;
             background: transparent;
