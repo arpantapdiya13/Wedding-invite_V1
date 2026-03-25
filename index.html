@@ -597,22 +597,24 @@
         let isPlaying = false;
 
     
-        function typeMantra() {
+function typeMantra() {
     const pathContent = document.getElementById('textPathContent');
-    const fullMantra = " ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ॐ गणेशाय नमः ";
-
-    pathContent.textContent = "";
-
-    const segmenter = new Intl.Segmenter("hi", { granularity: "grapheme" });
-    const parts = Array.from(segmenter.segment(fullMantra), s => s.segment);
+    const units = [
+        " ॐ गणेशाय नमः",
+        " ॐ गणेशाय नमः",
+        " ॐ गणेशाय नमः",
+        " ॐ गणेशाय नमः",
+        " ॐ गणेशाय नमः"
+    ];
 
     let i = 0;
+    pathContent.textContent = "";
 
     const interval = setInterval(() => {
-        pathContent.textContent += parts[i];
+        pathContent.textContent += units[i];
         i++;
 
-        if (i >= parts.length) {
+        if (i >= units.length) {
             clearInterval(interval);
         }
     }, 90);
